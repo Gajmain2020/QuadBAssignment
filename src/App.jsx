@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import "./styles/main.css";
 import Todos from "./components/Todos";
+import DisplayTodos from "./components/DisplayTodos";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         transition={{ type: "spring", duration: 1 }}
       ></motion.div>
       <Todos />
+      <DisplayTodos />
     </div>
   );
 }
