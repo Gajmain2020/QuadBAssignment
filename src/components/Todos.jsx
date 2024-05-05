@@ -1,22 +1,41 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { connect } from "react-redux";
+import { addTodos } from "../redux/reducer";
 import { GoPlus } from "react-icons/go";
 import { motion } from "framer-motion";
 
-export default function Todos(props) {
+const mapStateToProps = (state) => {
+  return {
+    todos: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (obj) => dispatch(addTodos(obj)),
+  };
+};
+
+const Todos = (props) => {
   const [todo, setTodo] = useState("");
 
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
 
-  const addTodo = () => {
-    //function to add the todo
+  const add = () => {
     if (todo === "") {
-      alert("Todo input is empty!!");
-      return;
+      alert("Input is Empty");
+    } else {
+      props.addTodo({
+        id: Math.floor(Math.random() * 1000),
+        item: todo,
+        completed: false,
+      });
+      setTodo("");
     }
-    console.log(todo);
   };
   return (
     <div className="addTodos">
@@ -25,18 +44,19 @@ export default function Todos(props) {
         onChange={(e) => handleChange(e)}
         className="todo-input"
         value={todo}
-        placeholder="✍️ What you have to do?"
+        placeholder="✍️ Tell me what you want to do..."
       />
 
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="add-btn"
-        onClick={() => addTodo()}
+        onClick={() => add()}
       >
         <GoPlus />
       </motion.button>
       <br />
     </div>
   );
-}
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
