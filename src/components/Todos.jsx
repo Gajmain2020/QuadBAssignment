@@ -25,6 +25,12 @@ const Todos = (props) => {
     setTodo(e.target.value);
   };
 
+  function handleKeyDown(e) {
+    if (e.keyCode === 13) {
+      add(e.target.value);
+    }
+  }
+
   const add = () => {
     if (todo === "") {
       alert("Input is Empty");
@@ -42,6 +48,7 @@ const Todos = (props) => {
       <input
         type="text"
         onChange={(e) => handleChange(e)}
+        onKeyDown={(e) => handleKeyDown(e)}
         className="todo-input"
         value={todo}
         placeholder="✍️ Tell me what you want to do..."
