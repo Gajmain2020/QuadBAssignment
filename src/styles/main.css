@@ -17,7 +17,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: #222;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .App {
@@ -214,4 +214,19 @@ body {
   .card {
     margin-right: 0;
   }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(88, 88, 88);
+  color: white;
+}
+
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
 }

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import "./styles/main.css";
 import Todos from "./components/Todos";
 import DisplayTodos from "./components/DisplayTodos";
+// import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
       ></motion.div>
       <Todos />
       <DisplayTodos />
+
+      {/* <Footer /> */}
     </div>
   );
 }
